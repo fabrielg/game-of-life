@@ -84,7 +84,8 @@ def main():
                     if 700 <= pos[0] <= 750:
                         cells = np.zeros((60, 80))
                         update(screen, cells, 10)
-                        pygame.display.update()
+                    update(screen, cells, 10)
+                    pygame.display.update()
                     continue
 
                 cells[(pos[1] - SETTINGS_MENU_SIZE) // 10, pos[0] // 10] = 1
