@@ -82,7 +82,6 @@ def main():
                 
                 if pos[1] < SETTINGS_MENU_SIZE:
                     if 700 <= pos[0] <= 750:
-                        print('Clearing')
                         cells = np.zeros((60, 80))
                         update(screen, cells, 10)
                         pygame.display.update()
