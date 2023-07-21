@@ -41,9 +41,12 @@ def main():
     screen = pygame.display.set_mode((800, 600))
 
     slider = Slider(screen, 50, 50, 100, 15, min=0.001, max=0.1, step=0.001, initial=0.001, handleRadius=12)
-    textbox = TextBox(screen, 175, 36, 50, 50, fontSize=20, borderColour=(255, 0, 0), textColour=(255, 0, 0), radius=10)
+    textbox = TextBox(screen, 175, 36, 50, 50, fontSize=20, radius=10)
+    clearButton = TextBox(screen, 700, 36, 50, 50, fontSize=20, borderColour=(255, 0, 0), textColour=(255, 0, 0), radius=10)
 
     textbox.disable()
+    clearButton.setText('Clear')
+    clearButton.disable()
 
     cells = np.zeros((60, 80))
     screen.fill(COLOR_GRID)
@@ -76,8 +79,15 @@ def main():
 
             if pygame.mouse.get_pressed()[0]:
                 pos = pygame.mouse.get_pos()
-                if pos[1] < 40:
+                
+                if pos[1] < SETTINGS_MENU_SIZE:
+                    if 700 <= pos[0] <= 750:
+                        print('Clearing')
+                        cells = np.zeros((60, 80))
+                        update(screen, cells, 10)
+                        pygame.display.update()
                     continue
+
                 cells[(pos[1] - SETTINGS_MENU_SIZE) // 10, pos[0] // 10] = 1
                 update(screen, cells, 10)
                 pygame.display.update()
