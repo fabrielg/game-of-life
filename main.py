@@ -1,5 +1,6 @@
 import time
 import pygame
+import pygame_widgets
 import numpy as np
 
 COLOR_BG = (0, 0, 0)
@@ -36,8 +37,6 @@ def update(scren, cells, size, with_progress=False):
 def main():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
-
-    
 
     cells = np.zeros((60, 80))
     screen.fill(COLOR_GRID)
